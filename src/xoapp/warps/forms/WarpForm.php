@@ -3,6 +3,7 @@
 namespace xoapp\warps\forms;
 
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 use xoapp\warps\data\DataManager;
 use xoapp\warps\libs\Forms\FormAPI\SimpleForm;
 use xoapp\warps\WarpUtils;
@@ -27,7 +28,7 @@ class WarpForm extends SimpleForm {
 
             if (!$permission == null) {
                 if (!$player->hasPermission($permission)) {
-                    $player->sendMessage(WarpUtils::getMessageManager("no-permission-message"));
+                    $player->sendMessage((TextFormat::colorize(WarpUtils::getMessageManager("no-permission-message"))));
                     return;
                 }
             }
@@ -38,9 +39,12 @@ class WarpForm extends SimpleForm {
 
             $message = WarpUtils::getMessageManager("teleport-message");
             $message = str_replace("{warpName}", $data, $message);
-            $player->sendMessage($message);
+            $player->sendMessage(TextFormat::colorize($message));
+
         });
+
         $this->setTitle(WarpUtils::getMessageManager("form-title"));
+
         if (count(DataManager::getInstance()->getWarps()) < 0) {
             $this->addButton("Close", 0, "textures/ui/redX1");
         } else {
@@ -49,7 +53,7 @@ class WarpForm extends SimpleForm {
                 $message = WarpUtils::getMessageManager("form-button");
                 $message = str_replace("{players}", WarpUtils::getPlayersCount($world), $message);
                 $message = str_replace("{name}", $warp, $message);
-                $this->addButton($message, 0, "", $warp);
+                $this->addButton(TextFormat::colorize($message), 0, "", $warp);
             }
 
             $this->addButton("Close", 0, "textures/ui/redX1", "close");
