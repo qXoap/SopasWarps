@@ -38,7 +38,7 @@ class WarpForm extends SimpleForm {
             $player->teleport($position);
 
             $message = WarpUtils::getMessageManager("teleport-message");
-            $message = str_replace("{warpName}", $data, $message);
+            $message = str_replace("{warp}", $data, $message);
             $player->sendMessage(TextFormat::colorize($message));
 
         });
@@ -46,8 +46,11 @@ class WarpForm extends SimpleForm {
         $this->setTitle(WarpUtils::getMessageManager("form-title"));
 
         if (count(DataManager::getInstance()->getWarps()) < 0) {
+
             $this->addButton("Close", 0, "textures/ui/redX1");
+
         } else {
+
             foreach (DataManager::getInstance()->getWarps() as $warp) {
                 $world = DataManager::getInstance()->getWarpData($warp, "world");
                 $message = WarpUtils::getMessageManager("form-button");

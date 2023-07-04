@@ -1,0 +1,12 @@
+# SopasWarps by Xoapp
+
+# forms
+form-title: "Available Warps"
+# tags
+# {players} to see players count
+# {warp} to see players count
+form-button: "{warp} \n &8Players: &c{players}"
+
+# messages
+teleport-message: "&8(&6SopasWarps&8) &7You have successfully teleported to &a{warp}"
+no-permission-message: "&8(&6SopasWarps&8) &7You dont have permission to use this warp"
