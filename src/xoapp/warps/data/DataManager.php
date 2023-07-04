@@ -20,6 +20,22 @@ class DataManager {
         $this->config = new Config(Loader::getInstance()->getDataFolder() . "warps.json", Config::JSON);
     }
 
+    public function getWarps(): array
+    {
+        return $this->config->getAll(true);
+    }
+
+    public function getWarp(string $name): string
+    {
+        return $this->config->get($name);
+    }
+
+    public function getWarpData(string $name, string $array): string
+    {
+        return $this->config->get($name)[$array];
+    }
+
+
     public function register(string $name, Location $location, string $permission = null): void
     {
         $this->config->set($name, [
