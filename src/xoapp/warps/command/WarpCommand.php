@@ -26,7 +26,7 @@ class WarpCommand extends Command {
     {
         if (!$player instanceof Player) return;
 
-        if ($this->testPermission($player)) {
+        if (!$this->testPermission($player)) {
             $player->sendForm(new WarpForm());
             return;
         }
@@ -50,12 +50,12 @@ class WarpCommand extends Command {
 
                 if (!isset($args[2])) {
                     DataManager::getInstance()->register($args[1], $player->getLocation());
-                    $player->sendMessage(TextFormat::colorize("&cThis warp has been successfully registered"));
+                    $player->sendMessage(TextFormat::colorize("&aThis warp has been successfully registered"));
                     return;
                 }
 
                 DataManager::getInstance()->register($args[1], $player->getLocation(), $args[2]);
-                $player->sendMessage(TextFormat::colorize("&cThis warp has been successfully registered"));
+                $player->sendMessage(TextFormat::colorize("&aThis warp has been successfully registered"));
                 break;
             case "remove":
                 if (!isset($args[1])) {
@@ -69,7 +69,7 @@ class WarpCommand extends Command {
                 }
 
                 DataManager::getInstance()->unregister($args[1]);
-                $player->sendMessage(TextFormat::colorize("&cThis warp has successfully deleted"));
+                $player->sendMessage(TextFormat::colorize("&aThis warp has successfully deleted"));
                 break;
 
             default:

@@ -3,3 +3,7 @@ main: xoapp\warps\Loader
 api: 5.0.0
 version: 1.0.0
 author: Xoapp
+
+permissions:
+  sopas.warps.command:
+    default: op

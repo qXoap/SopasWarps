@@ -30,9 +30,9 @@ class DataManager {
         return $this->config->get($name);
     }
 
-    public function getWarpData(string $name, string $array): string
+    public function getWarpData(string $name, string $array): ?string
     {
-        return $this->config->get($name)[$array];
+        return $array == null ? null : $this->config->get($name)[$array];
     }
 
 
